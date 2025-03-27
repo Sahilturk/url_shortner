@@ -48,7 +48,7 @@ export const storeClicks = async ({id, originalUrl}) => {
     const device = res.type || "desktop"; // Default to desktop if type is not detected
 
  // Using CORS proxy
- const response = await fetch("https://cors-anywhere.herokuapp.com/https://ipapi.co/json");
+ const response = await fetch(`https://ipinfo.io/json?token=349357109c31c2`);
     const {city, country_name: country} = await response.json();
 
     // Record the click
@@ -63,5 +63,6 @@ export const storeClicks = async ({id, originalUrl}) => {
     window.location.href = originalUrl;
   } catch (error) {
     console.error("Error recording click:", error);
+    window.location.href = originalUrl;
   }
 };
